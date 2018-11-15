@@ -45,6 +45,7 @@ namespace DatingApp.API
           ValidateAudience = false
           };
         });
+      services.AddCors();
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -59,6 +60,11 @@ namespace DatingApp.API
       }
 
       //app.UseHttpsRedirection();
+      app.UseCors(builder =>
+        builder.WithOrigins("http://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials());
       app.UseAuthentication();
       app.UseMvc();
     }
