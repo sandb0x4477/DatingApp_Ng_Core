@@ -1,0 +1,17 @@
+{
+  "name": "DatingApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:client": "cd DatingApp-SPA && ng serve",
+    "watch:server": "cd DatingApp.API && dotnet watch run",
+    "watch": "run-p watch:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "npm-run-all": "^4.1.3"
+  }
+}
