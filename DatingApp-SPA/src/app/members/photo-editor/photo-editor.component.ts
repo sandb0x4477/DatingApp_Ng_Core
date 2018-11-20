@@ -54,6 +54,11 @@ export class PhotoEditorComponent implements OnInit {
           isMain: res.isMain
         };
         this.photos.push(photo);
+        if (photo.isMain) {
+          this.auth.changeMemberPhoto(photo.url);
+          this.auth.currentUser.photoUrl = photo.url;
+          localStorage.setItem('user', JSON.stringify(this.auth.currentUser));
+        }
       }
     };
   }
@@ -61,12 +66,12 @@ export class PhotoEditorComponent implements OnInit {
   setMainPhoto(photo: Photo) {
     this.userService.setMainPhoto(this.auth.decodedToken.nameid, photo.id)
       .subscribe(res => {
-       this.currentMain = this.photos.filter(p => p.isMain === true)[0];
-       this.currentMain.isMain = false;
-       photo.isMain = true;
-       this.auth.changeMemberPhoto(photo.url);
-       this.auth.currentUser.photoUrl = photo.url;
-       localStorage.setItem('user', JSON.stringify(this.auth.currentUser));
+        this.currentMain = this.photos.filter(p => p.isMain === true)[0];
+        this.currentMain.isMain = false;
+        photo.isMain = true;
+        this.auth.changeMemberPhoto(photo.url);
+        this.auth.currentUser.photoUrl = photo.url;
+        localStorage.setItem('user', JSON.stringify(this.auth.currentUser));
       }, err => {
         this.alertify.error(err);
       });
@@ -74,11 +79,11 @@ export class PhotoEditorComponent implements OnInit {
 
   deletePhoto(photo: Photo) {
     this.userService.deletePhoto(this.auth.decodedToken.nameid, photo.id)
-    .subscribe(res => {
-      this.photos = this.photos.filter(p => p.id !== photo.id);
-      this.alertify.success('Success');
-    }, err => {
-      this.alertify.error(err);
-    });
+      .subscribe(res => {
+        this.photos = this.photos.filter(p => p.id !== photo.id);
+        this.alertify.success('Success');
+      }, err => {
+        this.alertify.error(err);
+      });
   }
 }
