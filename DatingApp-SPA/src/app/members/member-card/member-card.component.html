@@ -6,7 +6,9 @@
         <button class="btn btn-primary btn-sm mr-2"
         [routerLink]="['/members/', user.id]"
         ><i class="fa fa-user"></i></button>
-        <button class="btn btn-primary btn-sm mr-2"><i class="fa fa-heart"></i></button>
+        <button class="btn btn-primary btn-sm mr-2"
+        (click)="sendLike(user)"
+        ><i class="fa fa-heart"></i></button>
         <button class="btn btn-primary btn-sm"><i class="fa fa-envelope"></i></button>
       </li>
     </ul>
