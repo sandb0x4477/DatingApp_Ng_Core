@@ -7,10 +7,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { TabsModule, ButtonsModule } from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap';
-import {TimeAgoPipe} from 'time-ago-pipe';
+import { TimeAgoPipe } from 'time-ago-pipe';
 import { PaginationModule } from 'ngx-bootstrap';
-
-
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +19,6 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
-import { BsDropdownModule } from 'ngx-bootstrap';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -42,55 +40,55 @@ export function tokenGetter() {
 
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      NavbarComponent,
-      HomeComponent,
-      RegisterComponent,
-      MemberListComponent,
-      ListsComponent,
-      MessagesComponent,
-      MemberCardComponent,
-      MemberDetailComponent,
-      MembersEditComponent,
-      PhotoEditorComponent,
-      TimeAgoPipe
-   ],
-   imports: [
-      BrowserModule,
-      HttpClientModule,
-      ReactiveFormsModule,
-      FormsModule,
-      NgxGalleryModule,
-      FileUploadModule,
-      BsDropdownModule.forRoot(),
-      BsDatepickerModule.forRoot(),
-      TabsModule.forRoot(),
-      PaginationModule.forRoot(),
-      ButtonsModule,
-      AppRoutingModule,
-      JwtModule.forRoot({
-        config: {
-          tokenGetter: tokenGetter,
-          whitelistedDomains: ['localhost:5000'],
-          blacklistedRoutes: ['localhost:5000/api/auth']
-        }
-      })
-   ],
-   providers: [
-      AuthService,
-      ErrorInterceptorProvider,
-      AlertifyService,
-      AuthGuard,
-      UsersService,
-      MemberDetailResolver,
-      MemberListResolver,
-      MemberEditResolver,
-      ListsResolver,
-      PreventUnsavedChanges
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    RegisterComponent,
+    MemberListComponent,
+    ListsComponent,
+    MessagesComponent,
+    MemberCardComponent,
+    MemberDetailComponent,
+    MembersEditComponent,
+    PhotoEditorComponent,
+    TimeAgoPipe
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgxGalleryModule,
+    FileUploadModule,
+    BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TabsModule.forRoot(),
+    PaginationModule.forRoot(),
+    ButtonsModule,
+    AppRoutingModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:5000'],
+        blacklistedRoutes: ['localhost:5000/api/auth']
+      }
+    })
+  ],
+  providers: [
+    AuthService,
+    ErrorInterceptorProvider,
+    AlertifyService,
+    AuthGuard,
+    UsersService,
+    MemberDetailResolver,
+    MemberListResolver,
+    MemberEditResolver,
+    ListsResolver,
+    PreventUnsavedChanges
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

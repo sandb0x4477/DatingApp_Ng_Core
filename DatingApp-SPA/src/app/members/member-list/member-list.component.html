@@ -5,7 +5,7 @@
 <div class="container mt-3">
   <div>
 
-    <form class="form-inline" novalidate #form="ngForm" (ngSubmit)="loadUsers($event)">
+    <form class="form-inline" novalidate #form="ngForm" (ngSubmit)="loadUsers()">
       <div class="form-group">
         <label for="minAge">Age From</label>
         <input type="number" class="form-control ml-1" style="width: 70px" id="minAge" name="minAge" [(ngModel)]="userParams.minAge">
