@@ -3,15 +3,17 @@ using System;
 using DatingApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20181126052909_MessageAdded")]
+    partial class MessageAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +45,11 @@ namespace DatingApp.API.Migrations
 
                     b.Property<bool>("IsRead");
 
-                    b.Property<DateTime>("MessageSent");
+                    b.Property<DateTime>("MessageRead");
 
-                    b.Property<bool>("RecipientDeleted");
+                    b.Property<int?>("RecipeintId");
+
+                    b.Property<bool>("RecipentDeleted");
 
                     b.Property<int>("RecipientId");
 
@@ -55,7 +59,7 @@ namespace DatingApp.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipientId");
+                    b.HasIndex("RecipeintId");
 
                     b.HasIndex("SenderId");
 
@@ -149,9 +153,9 @@ namespace DatingApp.API.Migrations
 
             modelBuilder.Entity("DatingApp.API.Models.Message", b =>
                 {
-                    b.HasOne("DatingApp.API.Models.User", "Recipient")
+                    b.HasOne("DatingApp.API.Models.User", "Recipeint")
                         .WithMany("MessagesReceived")
-                        .HasForeignKey("RecipientId")
+                        .HasForeignKey("RecipeintId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DatingApp.API.Models.User", "Sender")
