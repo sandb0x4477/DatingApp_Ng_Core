@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  model: any = {};
+  model: any = {
+    username: 'aida',
+    password: 'password'
+  };
   photoUrl: string;
 
   constructor(public auth: AuthService,
